@@ -36,14 +36,17 @@ namespace UmbMapper.PropertyMappers
         public PropertyMapInfo Info { get; }
 
         /// <inheritdoc/>
-        public UmbracoContext UmbracoContext => this.GetUmbracoContext();
+        public UmbracoContext UmbracoContext //=> this.GetUmbracoContext();
+        {
+            get;set;
+        }
 
         /// <inheritdoc/>
         public MembershipHelper Members =>
             global::Umbraco.Web.Composing.Current.Factory.GetInstance<MembershipHelper>();
         
         /// <inheritdoc/>
-        public UmbracoHelper Umbraco => global::Umbraco.Web.Composing.Current.UmbracoHelper;
+        //public UmbracoHelper Umbraco => global::Umbraco.Web.Composing.Current.UmbracoHelper;
 
         /// <summary>
         /// Gets the current alias.

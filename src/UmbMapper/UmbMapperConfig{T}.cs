@@ -47,6 +47,8 @@ namespace UmbMapper
         private bool hasPredicate;
         private bool createProxy;
 
+        public UmbracoContext UmbracoContext { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="UmbMapperConfig{T}"/> class.
         /// </summary>
@@ -490,6 +492,8 @@ namespace UmbMapper
             for (int i = 0; i < this.nonLazyMaps.Length; i++)
             {
                 PropertyMap<T> map = this.nonLazyMaps[i];
+                map.PropertyMapper.UmbracoContext = this.UmbracoContext;
+
                 object value = MapProperty(map, content, destination);
                 if (value != null)
                 {
@@ -547,5 +551,6 @@ namespace UmbMapper
 
             return exists;
         }
+
     }
 }

@@ -23,7 +23,7 @@ namespace UmbMapper.PropertyMappers
         /// <summary>
         /// Gets the Umbraco context
         /// </summary>
-        UmbracoContext UmbracoContext { get; }
+        UmbracoContext UmbracoContext { get; set; }
 
         /// <summary>
         /// Gets the MembershipHelper instance
@@ -33,7 +33,7 @@ namespace UmbMapper.PropertyMappers
         /// <summary>
         /// Gets the UmbracoHelper instance
         /// </summary>
-        UmbracoHelper Umbraco { get; }
+        //UmbracoHelper Umbraco { get; }
 
         /// <summary>
         /// Maps the raw property from the given content without conversion.

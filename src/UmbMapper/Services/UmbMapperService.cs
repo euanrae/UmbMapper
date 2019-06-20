@@ -21,7 +21,6 @@ namespace UmbMapper.Services
         public UmbMapperService(IUmbracoContextFactory ctxFactory)
         {
             _ctxFactory = ctxFactory;
-            _ctxFactory.EnsureUmbracoContext();
         }
 
         /// <summary>
@@ -50,7 +49,20 @@ namespace UmbMapper.Services
                 throw new InvalidOperationException($"No mapper for the given type {type} has been registered.");
             }
 
+            mapper.UmbracoContext = UmbracoContext;
+
             return mapper.Map(content);
+        }
+
+        private UmbracoContext UmbracoContext
+        {
+            get
+            {
+                using (var ctx = _ctxFactory.EnsureUmbracoContext())
+                {
+                    return ctx.UmbracoContext;
+                }
+            }
         }
     }
 }
