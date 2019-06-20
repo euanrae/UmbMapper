@@ -30,11 +30,12 @@ namespace UmbMapper.Umbraco8.Tests.Mapping
             //var _umbracoContext = new UmbracoContext();
 
             ////Umbraco.Web.Composing.Current.UmbracoContext
+            //Umbraco.Web.Composing.Current.UmbracoContextAccessor
         }
 
         private void InitMappers()
         {
-            UmbMapperRegistry.AddMapper(new PublishedItemMap());
+                UmbMapperRegistry.AddMapper(new PublishedItemMap());
             UmbMapperRegistry.AddMapper(new LazyPublishedItemMap());
             UmbMapperRegistry.AddMapperFor<AutoMappedItem>();
             UmbMapperRegistry.AddMapper(new BackedPublishedItemMap());

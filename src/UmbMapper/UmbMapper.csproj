@@ -282,6 +282,8 @@
     <Compile Include="Converters\SimpleConverter{T}.cs" />
     <Compile Include="PropertyMappers\CsvPropertyMapper.cs" />
     <Compile Include="Converters\IntegralNumberConverter{T}.cs" />
+    <Compile Include="Services\IUmbMapperService.cs" />
+    <Compile Include="Services\UmbMapperService.cs" />
     <Compile Include="UmbMapperConfigStatics.cs" />
     <Compile Include="UmbMapperRegistry.cs" />
     <Compile Include="PropertyMapExtensions.cs" />
