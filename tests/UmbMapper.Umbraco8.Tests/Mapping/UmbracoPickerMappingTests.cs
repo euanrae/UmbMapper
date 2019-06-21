@@ -23,31 +23,34 @@ namespace UmbMapper.Umbraco8.Tests.Mapping
         {
             this.support = support;
 
-            
-            //// Set up the content cache to return our mocked object
-            //var contentCacheMock = new Mock<IPublishedContentCache>();
-            //contentCacheMock.Setup(cache => cache.GetById(1000)).Returns(new MockPublishedContent());
 
-            //// Set up the Umbraco context, which will return the content cache
-            //var umbCtxMock = new Mock<UmbracoContext>();
+            // Set up the content cache to return our mocked object
+            var contentCacheMock = new Mock<IPublishedContentCache>();
+            contentCacheMock.Setup(cache => cache.GetById(1000)).Returns(new MockPublishedContent());
+
+            var memberCache = new Mock<IPublishedMemberCache>();
+            memberCache.Setup(mc => mc.GetById(5678)).Returns(new MockPublishedContent());
+
+            // Set up the Umbraco context, which will return the content cache
+            var umbCtxMock = new Mock<UmbracoContext>();
             //umbCtxMock.Setup(m => m.ContentCache).Returns(contentCacheMock.Object);
 
-            //// Set up the Umbraco Contex Reference
-            //var ctxRef = new Mock<UmbracoContextReference>();
-            //ctxRef.Setup(r => r.UmbracoContext).Returns(umbCtxMock.Object);
+            // Set up the Umbraco Contex Reference
+            var ctxRef = new Mock<UmbracoContextReference>();
+            ctxRef.Setup(r => r.UmbracoContext).Returns(umbCtxMock.Object);
 
-            //// Mock the context factory
-            //var ctxMock = new Mock<IUmbracoContextFactory>();
-            //ctxMock.Setup(m => m.EnsureUmbracoContext(null)).Returns(ctxRef.Object);
+            // Mock the context factory
+            var ctxMock = new Mock<IUmbracoContextFactory>();
+            ctxMock.Setup(m => m.EnsureUmbracoContext(null)).Returns(ctxRef.Object);
 
-            //// Instantiate our service with the context
-            //_umbMapperService = new UmbMapperService(ctxMock.Object);
+            // Instantiate our service with the context
+            _umbMapperService = new UmbMapperService(ctxMock.Object);
         }
 
         [Fact]
         public void UmbracoPickerProcessesIPublishedContent()
         {
-            PublishedItem serviceResult = _umbMapperService.MapTo<PublishedItem>(this.support.Content);
+            //PublishedItem serviceResult = _umbMapperService.MapTo<PublishedItem>(this.support.Content);
             PublishedItem result = this.support.Content.MapTo<PublishedItem>();
 
             Assert.NotNull(result);

@@ -42,12 +42,11 @@ namespace UmbMapper.PropertyMappers
         }
 
         /// <inheritdoc/>
-        public MembershipHelper Members =>
-            global::Umbraco.Web.Composing.Current.Factory.GetInstance<MembershipHelper>();
-        
-        /// <inheritdoc/>
-        //public UmbracoHelper Umbraco => global::Umbraco.Web.Composing.Current.UmbracoHelper;
+        public UmbracoHelper Umbraco => global::Umbraco.Web.Composing.Current.UmbracoHelper;
 
+        /// <inheritdoc/>
+        public MembershipHelper Members => this.Umbraco.MembershipHelper;
+        
         /// <summary>
         /// Gets the current alias.
         /// </summary>

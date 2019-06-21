@@ -85,6 +85,17 @@ namespace UmbMapper.Umbraco8.Tests.Mocks
 
         public IPublishedProperty GetProperty(string alias, bool recurse)
         {
+            foreach (var p in this.Properties)
+            {
+                if (p.Alias.ToLower() == alias.ToLower())
+                {
+                    if (p == null && recurse && this.Parent != null)
+                    {
+                        return null;
+                    }
+                    return p;
+                }
+            }
             IPublishedProperty prop = this.Properties.SingleOrDefault(p => p.PropertyType.Alias.InvariantEquals(alias));
 
             if (prop == null && recurse && this.Parent != null)
